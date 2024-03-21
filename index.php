@@ -162,41 +162,6 @@ body {
             </div>
         </div>
     </section>
-    <section class="py-3 mt-2">
-    <div class="container">
-        <h1 style="color: white; text-align:center">Daftar Komentar</h1>
-        <?php
-        // Lakukan koneksi ke database atau impor file koneksi jika diperlukan
-        require "koneksi.php";
-
-        // Ambil data komentar dari database, diurutkan berdasarkan tanggal terbaru
-        $komentar_query = "SELECT * FROM komentar ORDER BY tanggal DESC";
-        $result = mysqli_query($koneksi, $komentar_query);
-
-        // Pastikan query berhasil
-        if($result && mysqli_num_rows($result) > 0) {
-            // Tampilkan komentar
-            while($row = mysqli_fetch_assoc($result)) {
-                ?>
-                <div class="card mb-3" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title" style="color : black">Email: <?php echo $row['email']; ?></h5>
-                        <p style="color : black" class="card-text">Komentar: <?php echo $row['komentar']; ?></p>
-                        <p style="color : black" class="card-text">Tanggal: <?php echo $row['tanggal']; ?></p>
-                    </div>
-                </div>
-                <?php
-            }
-        } else {
-            echo "<p>Tidak ada komentar.</p>";
-        }
-
-        // Tutup koneksi ke database jika tidak lagi digunakan
-        mysqli_close($koneksi);
-        ?>
-    </div>
-</section>
-
 
 <section id="form-komentar" class="py-3 mb-4">
     <div class="container">
